@@ -7,7 +7,7 @@ import '../../../core/global/custom_text.dart';
 import '../../../core/utils/constants/app_colors.dart';
 import '../../../core/utils/icon_path/icon_path.dart';
 import '../employee_home/presentation/screen/employee_home.dart';
-import '../employee_profile/presentation/widget/employee_profile_screen.dart';
+import '../employee_profile/presentation/screen/employee_profile_screen.dart';
 import '../employee_schedule/presentation/screen/employee_scheduled_screen.dart';
 import '../messaging/presentation/screen/messaging_screen.dart';
 import 'employee_nav_controller.dart';

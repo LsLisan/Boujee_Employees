@@ -6,6 +6,9 @@ import '../features/authentication/presentation/screen/forget_password_screen.da
 import '../features/authentication/presentation/screen/forget_password_verify_screen.dart' hide ForgetPasswordScreen;
 import '../features/authentication/presentation/screen/login_screen.dart';
 import '../features/employee_nav/employee_nav_bar.dart';
+import '../features/employee_profile/presentation/screen/certificate_screen.dart';
+import '../features/employee_profile/presentation/screen/edit_profile_screen.dart';
+import '../features/employee_profile/presentation/screen/privacy_policy_screen.dart';
 import '../features/messaging/presentation/screen/chat_screen.dart';
 import '../features/splash/presentation/screen/splash_screen.dart';
 
@@ -20,6 +23,10 @@ class AppRoutes {
   static const String resetPassword = '/resetPassword';
 
   static const String chat = '/chat';
+
+  static const String editProfile = '/editProfile';
+  static const String privacyPolicy = '/privacyPolicy';
+  static const String certificate = '/certificate';
 
 
 
@@ -49,6 +56,24 @@ class AppRoutes {
       page: () => ChatScreen(),
       transition: Transition.cupertino,
     ),
+
+    GetPage(
+      name: editProfile,
+      page: () => EditProfileScreen(),
+      transition: Transition.cupertino,
+    ),
+    GetPage(
+      name: privacyPolicy,
+      page: () => PrivacyPolicyScreen(),
+      transition: Transition.cupertino,
+    ),
+    GetPage(
+      name: certificate,
+      page: () => CertificateScreen(),
+      transition: Transition.cupertino,
+    ),
+
+
 
   ];
 

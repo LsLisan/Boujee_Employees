@@ -22,6 +22,7 @@ class IconPath {
   static const shieldDone = '$_basePath/Shield_Done.svg';
 
   static const profile = '$_basePath/Profile.svg';
+  static const certificate = '$_basePath/certificate.svg';
   static const privacyPolicy = '$_basePath/locked.svg';
   static const faq = '$_basePath/question_mark.svg';
   static const deleteAccount = '$_basePath/delete.svg';
