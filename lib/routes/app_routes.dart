@@ -6,6 +6,7 @@ import '../features/authentication/presentation/screen/forget_password_screen.da
 import '../features/authentication/presentation/screen/forget_password_verify_screen.dart' hide ForgetPasswordScreen;
 import '../features/authentication/presentation/screen/login_screen.dart';
 import '../features/employee_nav/employee_nav_bar.dart';
+import '../features/messaging/presentation/screen/chat_screen.dart';
 import '../features/splash/presentation/screen/splash_screen.dart';
 
 class AppRoutes {
@@ -18,7 +19,7 @@ class AppRoutes {
   static const String forgetPasswordVerification = '/forgetPasswordVerification';
   static const String resetPassword = '/resetPassword';
 
-
+  static const String chat = '/chat';
 
 
 
@@ -43,6 +44,11 @@ class AppRoutes {
       transition: Transition.cupertino,
     ),
 
+    GetPage(
+      name: chat,
+      page: () => ChatScreen(),
+      transition: Transition.cupertino,
+    ),
 
   ];
 
