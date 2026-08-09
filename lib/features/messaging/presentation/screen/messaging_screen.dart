@@ -11,7 +11,7 @@ import '../../model/conversation_model.dart';
 class MessagingScreen extends StatelessWidget {
   MessagingScreen({super.key});
 
-  final MessagingController controller = Get.put(MessagingController());
+  final MessagingController controller = Get.find<MessagingController>();
 
   @override
   Widget build(BuildContext context) {
@@ -20,29 +20,78 @@ class MessagingScreen extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            // 1. Header with Custom Back Button & Centered Title
+            // 1. Header with Back Button & Centered Title
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 12.h),
-              child: Row(
+              child: Stack(
+                alignment: Alignment.center,
                 children: [
-                  Expanded(
-                    child: Center(
-                      child: CustomText(
-                        'Message',
-                        fontSize: 20.sp,
-                        fontWeight: FontWeight.bold,
-                        color: AppColors.black,
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: InkWell(
+                      onTap: () => Get.back(),
+                      borderRadius: BorderRadius.circular(20.r),
+                      child: Container(
+                        padding: EdgeInsets.all(8.r),
+                        decoration: const BoxDecoration(
+                          color: Colors.white,
+                          shape: BoxShape.circle,
+                        ),
+                        child: Icon(
+                          Icons.arrow_back,
+                          size: 20.r,
+                          color: AppColors.black,
+                        ),
                       ),
                     ),
                   ),
-                  SizedBox(width: 40.w), // Balances the CustomBackButton
+                  CustomText(
+                    'Message',
+                    fontSize: 20.sp,
+                    fontWeight: FontWeight.bold,
+                    color: AppColors.black,
+                  ),
                 ],
               ),
             ),
 
             SizedBox(height: 12.h),
 
-            // 2. Search Field
+            // 2. Custom Tab Toggle (Customer vs Support Team)
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.w),
+              child: Container(
+                padding: EdgeInsets.all(4.r),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(30.r),
+                ),
+                child: Obx(
+                      () => Row(
+                    children: [
+                      Expanded(
+                        child: _buildTabButton(
+                          title: 'Customer',
+                          isSelected: controller.selectedTabIndex.value == 0,
+                          onTap: () => controller.changeTab(0),
+                        ),
+                      ),
+                      Expanded(
+                        child: _buildTabButton(
+                          title: 'Support Team',
+                          isSelected: controller.selectedTabIndex.value == 1,
+                          onTap: () => controller.changeTab(1),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+
+            SizedBox(height: 16.h),
+
+            // 3. Search Field
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.w),
               child: CustomTextField(
@@ -59,7 +108,7 @@ class MessagingScreen extends StatelessWidget {
 
             SizedBox(height: 16.h),
 
-            // 3. Conversations List
+            // 4. Conversations List
             Expanded(
               child: Obx(() {
                 if (controller.isLoading.value) {
@@ -102,7 +151,34 @@ class MessagingScreen extends StatelessWidget {
     );
   }
 
-  /// Individual Conversation Item Tile Widget
+  /// Toggle Button Widget
+  Widget _buildTabButton({
+    required String title,
+    required bool isSelected,
+    required VoidCallback onTap,
+  }) {
+    return GestureDetector(
+      onTap: onTap,
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 200),
+        padding: EdgeInsets.symmetric(vertical: 12.h),
+        decoration: BoxDecoration(
+          color: isSelected ? AppColors.primary : Colors.transparent,
+          borderRadius: BorderRadius.circular(25.r),
+        ),
+        child: Center(
+          child: CustomText(
+            title,
+            fontSize: 14.sp,
+            fontWeight: FontWeight.w600,
+            color: isSelected ? Colors.white : AppColors.black,
+          ),
+        ),
+      ),
+    );
+  }
+
+  /// Individual Conversation Tile
   Widget _buildConversationItem(ConversationModel conversation) {
     return InkWell(
       onTap: () => controller.onConversationTap(conversation),
