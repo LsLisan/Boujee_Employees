@@ -6,6 +6,10 @@ import 'package:get/get.dart';
 import '../../../core/global/custom_text.dart';
 import '../../../core/utils/constants/app_colors.dart';
 import '../../../core/utils/icon_path/icon_path.dart';
+import '../employee_home/presentation/screen/employee_home.dart';
+import '../employee_profile/presentation/widget/employee_profile_screen.dart';
+import '../employee_schedule/presentation/screen/employee_scheduled_screen.dart';
+import '../messaging/presentation/screen/messaging_screen.dart';
 import 'employee_nav_controller.dart';
 
 class EmployeeNavBar extends StatelessWidget {
@@ -15,9 +19,11 @@ class EmployeeNavBar extends StatelessWidget {
     EmployeeNavController(),
   );
 
-  // Add your screen widgets here corresponding to each tab index [0 - 4]
   final List<Widget> screens = [
-
+    EmployeeHome(),
+    EmployeeScheduledScreen(),
+    MessagingScreen(),
+    EmployeeProfileScreen(),
   ];
 
   @override
@@ -36,7 +42,7 @@ class EmployeeNavBar extends StatelessWidget {
             ),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.05),
+                color: Colors.black.withValues(alpha: 0.05),
                 blurRadius: 20.r,
                 offset: const Offset(0, -4),
               ),
@@ -59,24 +65,18 @@ class EmployeeNavBar extends StatelessWidget {
                   ),
                   _buildNavItem(
                     index: 1,
-                    label: "My Booking".tr,
+                    label: "Schedule".tr,
                     svgPath: IconPath.document,
                     activeSvgPath: IconPath.activeDocument,
                   ),
                   _buildNavItem(
                     index: 2,
-                    label: "Pet".tr,
-                    svgPath: IconPath.pawPrint,
-                    activeSvgPath: IconPath.activePawPrint,
-                  ),
-                  _buildNavItem(
-                    index: 3,
                     label: "Message".tr,
                     svgPath: IconPath.chat,
                     activeSvgPath: IconPath.activeChat,
                   ),
                   _buildNavItem(
-                    index: 4,
+                    index: 3,
                     label: "Profile".tr,
                     svgPath: IconPath.userProfile,
                     activeSvgPath: IconPath.activeUserProfile,

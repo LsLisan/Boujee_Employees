@@ -45,7 +45,7 @@ class LoginController extends GetxController {
 
   // --- Sign In Actions ---
   void onSignIn() {
-
+    Get.toNamed(AppRoutes.employeeNavBar);
   }
 
   void onGoogleSignIn() {
