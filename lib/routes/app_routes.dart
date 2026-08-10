@@ -5,6 +5,8 @@ import '../features/authentication/presentation/screen/forget_new_password_scree
 import '../features/authentication/presentation/screen/forget_password_screen.dart';
 import '../features/authentication/presentation/screen/forget_password_verify_screen.dart' hide ForgetPasswordScreen;
 import '../features/authentication/presentation/screen/login_screen.dart';
+import '../features/employee_home/presentation/screen/jobs_view_all_screen.dart';
+import '../features/employee_home/presentation/screen/upcoming_appointment_details_screen.dart';
 import '../features/employee_nav/employee_nav_bar.dart';
 import '../features/employee_profile/presentation/screen/certificate_screen.dart';
 import '../features/employee_profile/presentation/screen/edit_profile_screen.dart';
@@ -21,6 +23,9 @@ class AppRoutes {
   static const String forgetPassword = '/forgetPassword';
   static const String forgetPasswordVerification = '/forgetPasswordVerification';
   static const String resetPassword = '/resetPassword';
+
+  static const String allJobs = '/allJobs';
+  static const String upcomingAppointmentDetails = '/upcomingAppointmentDetails';
 
   static const String chat = '/chat';
 
@@ -48,6 +53,17 @@ class AppRoutes {
     GetPage(
       name: employeeNavBar,
       page: () => EmployeeNavBar(),
+      transition: Transition.cupertino,
+    ),
+
+    GetPage(
+      name: allJobs,
+      page: () => JobsViewAllScreen(),
+      transition: Transition.cupertino,
+    ),
+    GetPage(
+      name: upcomingAppointmentDetails,
+      page: () => UpcomingAppointmentDetailsScreen(),
       transition: Transition.cupertino,
     ),
 
