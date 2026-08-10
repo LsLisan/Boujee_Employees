@@ -9,6 +9,7 @@ class JobModel {
   final String duration;
   final double price;
   final String status; // e.g., 'ACCEPTED', 'ASSIGNED'
+  final DateTime? date;
 
   JobModel({
     required this.id,
@@ -21,5 +22,6 @@ class JobModel {
     required this.duration,
     required this.price,
     required this.status,
+    this.date,
   });
 }
