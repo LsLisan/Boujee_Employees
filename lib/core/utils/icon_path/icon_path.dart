@@ -2,8 +2,9 @@ class IconPath {
   IconPath._();
 
   static const _basePath = 'assets/icons';
+  static const _basePathImage = 'assets/images';
 
-  static const appLogo = '$_basePath/app_logo.png';
+  static const appLogo = '$_basePathImage/app_logo.png';
   static const arrowLeft = '$_basePath/arrow_left.svg';
 
   static const document = '$_basePath/document.svg';
@@ -30,7 +31,4 @@ class IconPath {
 
   static const deliveryTruck = '$_basePath/delivery_truck.svg';
   static const notificationBell = '$_basePath/notification_bell.svg';
-
-
-
 }
