@@ -1,3 +1,4 @@
+import 'package:boujee_employees/features/employee_home/presentation/screen/job_details_screen.dart';
 import 'package:get/get.dart';
 import '../../../routes/app_routes.dart';
 import '../model/appoinemnt_model.dart';
@@ -101,5 +102,7 @@ class EmployeeHomeController extends GetxController {
     Get.toNamed(AppRoutes.allJobs);
   }
 
-  void onJobTap(JobModel job) {}
+  void onJobTap(JobModel job) {
+    Get.to(JobDetailsScreen());
+  }
 }
