@@ -100,7 +100,7 @@ class LoginController extends GetxController {
         "Error",
         "Please fill in both password fields",
         snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: Colors.red.withOpacity(0.8),
+        backgroundColor: Colors.red.withValues(alpha: 0.8),
         colorText: Colors.white,
       );
       return;
@@ -111,7 +111,7 @@ class LoginController extends GetxController {
         "Error",
         "Passwords do not match",
         snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: Colors.red.withOpacity(0.8),
+        backgroundColor: Colors.red.withValues(alpha: 0.8),
         colorText: Colors.white,
       );
       return;

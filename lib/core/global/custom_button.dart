@@ -85,10 +85,10 @@ class _CustomButtonState extends State<CustomButton> {
   Color get _effectiveBackgroundColor {
     if (!_isInteractive && !widget.isLoading) {
       return widget.disabledBackgroundColor ??
-          AppColors.grey.withOpacity(0.3);
+          AppColors.grey.withValues(alpha: 0.3);
     }
     if (widget.isLoading) {
-      return widget.backgroundColor.withOpacity(0.7);
+      return widget.backgroundColor.withValues(alpha: 0.7);
     }
     return widget.backgroundColor;
   }

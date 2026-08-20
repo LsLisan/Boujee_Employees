@@ -8,4 +8,3 @@ void main() async {
   await AuthService.init();
   runApp(MyApp());
 }
-

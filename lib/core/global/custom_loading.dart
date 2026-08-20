@@ -108,7 +108,7 @@ class _CircularDotsPainter extends CustomPainter {
 
       // Alpha gradient taper along the tail
       final double alpha = 0.3 + (0.7 * scaleProgress);
-      paint.color = color.withOpacity(alpha);
+      paint.color = color.withValues(alpha: alpha);
 
       canvas.drawCircle(Offset(x, y), dotRadius, paint);
     }
