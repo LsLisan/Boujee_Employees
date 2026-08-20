@@ -11,6 +11,7 @@ import '../features/employee_nav/employee_nav_bar.dart';
 import '../features/employee_profile/presentation/screen/certificate_screen.dart';
 import '../features/employee_profile/presentation/screen/edit_profile_screen.dart';
 import '../features/employee_profile/presentation/screen/privacy_policy_screen.dart';
+import '../features/employee_home/presentation/screen/notification_screen.dart';
 import '../features/messaging/presentation/screen/chat_screen.dart';
 import '../features/splash/presentation/screen/splash_screen.dart';
 
@@ -29,6 +30,7 @@ class AppRoutes {
       '/upcomingAppointmentDetails';
 
   static const String chat = '/chat';
+  static const String notifications = '/notifications';
 
   static const String editProfile = '/editProfile';
   static const String privacyPolicy = '/privacyPolicy';
@@ -68,6 +70,12 @@ class AppRoutes {
     GetPage(
       name: chat,
       page: () => ChatScreen(),
+      transition: Transition.cupertino,
+    ),
+
+    GetPage(
+      name: notifications,
+      page: () => const NotificationScreen(),
       transition: Transition.cupertino,
     ),
 

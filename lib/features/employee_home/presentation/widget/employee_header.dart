@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import '../../../../core/global/custom_text.dart';
 import '../../../../core/utils/constants/app_colors.dart';
 import '../../../../core/utils/icon_path/icon_path.dart';
+import '../../../../routes/app_routes.dart';
 import '../../../employee_profile/controller/employee_profile_controller.dart';
 
 class EmployeeHeader extends StatelessWidget {
@@ -86,7 +87,7 @@ class EmployeeHeader extends StatelessWidget {
             // Notification Bell
             GestureDetector(
               onTap: () {
-                // TODO: Handle notification tap
+                Get.toNamed(AppRoutes.notifications);
               },
               child: Container(
                 padding: EdgeInsets.all(10.r),
