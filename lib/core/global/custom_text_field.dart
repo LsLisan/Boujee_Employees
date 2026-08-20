@@ -106,7 +106,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
           color: Colors.black87,
         );
 
-    final Color defaultBorderColor = AppColors.primary.withOpacity(0.15);
+    final Color defaultBorderColor = AppColors.primary.withValues(alpha: 0.15);
     final Color focusBorderColor = AppColors.primary;
 
     // Build default password toggle icon if isPassword is true and no custom suffixIcon is passed
@@ -148,7 +148,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
         filled: widget.filled,
         fillColor: widget.enabled
             ? widget.fillColor
-            : AppColors.grey.withOpacity(0.1),
+            : AppColors.grey.withValues(alpha: 0.1),
         errorText: widget.errorText,
         errorStyle: widget.errorStyle,
         label: widget.labelText != null
@@ -188,7 +188,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
         disabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(widget.borderRadius),
           borderSide: BorderSide(
-            color: AppColors.grey.withOpacity(0.2),
+            color: AppColors.grey.withValues(alpha: 0.2),
             width: 1,
           ),
         ),

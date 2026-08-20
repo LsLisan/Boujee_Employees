@@ -17,6 +17,13 @@ subprojects {
 }
 subprojects {
     project.evaluationDependsOn(":app")
+    project.plugins.withId("org.jetbrains.kotlin.android") {
+        project.tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
+            compilerOptions {
+                freeCompilerArgs.add("-Xdisable-incremental-compilation")
+            }
+        }
+    }
 }
 
 tasks.register<Delete>("clean") {

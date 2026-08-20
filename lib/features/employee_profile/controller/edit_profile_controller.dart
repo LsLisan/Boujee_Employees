@@ -16,7 +16,8 @@ class EditProfileController extends GetxController {
   // Profile Avatar Image File Path & Network URL
   final RxString imagePath = ''.obs;
   final RxString avatarUrl =
-      'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=300'.obs;
+      'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=300'
+          .obs;
 
   // Certificates List (Holds image paths or URLs, max 10)
   final RxList<String> certificates = <String>[].obs;
@@ -109,8 +110,6 @@ class EditProfileController extends GetxController {
 
     isLoading.value = true;
 
-    // TODO: Implement API service to save/upload certificates
-
     Future.delayed(const Duration(seconds: 1), () {
       isLoading.value = false;
       Get.back();
@@ -127,8 +126,6 @@ class EditProfileController extends GetxController {
   /// Save Profile Updates
   void saveProfile() {
     isLoading.value = true;
-
-    // TODO: Implement API call to update profile data
 
     Future.delayed(const Duration(seconds: 1), () {
       isLoading.value = false;

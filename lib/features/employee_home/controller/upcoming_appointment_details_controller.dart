@@ -8,11 +8,11 @@ import '../../employee_nav/employee_nav_controller.dart';
 import '../model/appointment_details_model.dart';
 import '../presentation/widget/appoinment_details/complete_appointment_sheet.dart';
 import '../presentation/widget/appoinment_details/service_checklist_bottom_sheet.dart';
-import '../presentation/widget/appoinment_details/upload_photo-sheet.dart';
+import '../presentation/widget/appoinment_details/upload_photo_sheet.dart';
 
 class UpcomingAppointmentDetailsController extends GetxController {
   final Rx<AppointmentDetailsModel?> appointmentDetails =
-  Rx<AppointmentDetailsModel?>(null);
+      Rx<AppointmentDetailsModel?>(null);
 
   final TextEditingController notesController = TextEditingController();
 
@@ -102,20 +102,26 @@ class UpcomingAppointmentDetailsController extends GetxController {
     if (details == null) return;
 
     // Set Map Markers
-    markers.value = {
+    markers.assignAll({
       Marker(
         markerId: const MarkerId('user_origin'),
         position: details.startLocation,
         icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueOrange),
-        infoWindow: InfoWindow(title: 'Your Location', snippet: details.startAddress),
+        infoWindow: InfoWindow(
+          title: 'Your Location',
+          snippet: details.startAddress,
+        ),
       ),
       Marker(
         markerId: const MarkerId('destination'),
         position: details.destinationLocation,
         icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRose),
-        infoWindow: InfoWindow(title: 'Destination', snippet: details.destinationAddress),
+        infoWindow: InfoWindow(
+          title: 'Destination',
+          snippet: details.destinationAddress,
+        ),
       ),
-    };
+    });
 
     // Route Polyline Points
     final List<LatLng> polylineCoordinates = [
@@ -125,13 +131,13 @@ class UpcomingAppointmentDetailsController extends GetxController {
       details.destinationLocation,
     ];
 
-    polylines.value = {
+    polylines.assignAll({
       GoogleMapService.createRoutePolyline(
         polylineId: 'route_path',
         points: polylineCoordinates,
         color: AppColors.primary,
       ),
-    };
+    });
   }
 
   /// Toggle checkbox item state reactively
@@ -240,8 +246,11 @@ class UpcomingAppointmentDetailsController extends GetxController {
     final details = appointmentDetails.value;
     if (details == null || details.currentStep >= details.totalSteps) return;
 
-    final nextStepIndex = details.currentStep; // 0-indexed position for next step
-    final currentStepsList = List<ProgressStepModel>.from(details.progressSteps);
+    final nextStepIndex =
+        details.currentStep; // 0-indexed position for next step
+    final currentStepsList = List<ProgressStepModel>.from(
+      details.progressSteps,
+    );
 
     // Update old active step
     final oldCurrentIndex = details.currentStep - 1;
@@ -290,7 +299,6 @@ class UpcomingAppointmentDetailsController extends GetxController {
     );
   }
 
-
   void onCancelTap() {
     // TODO: Handle job cancellation flow
   }
@@ -321,7 +329,8 @@ class UpcomingAppointmentDetailsController extends GetxController {
 
   /// Handles navigating back to the Home Screen
   void onBackToHomeTap() {
-    final EmployeeNavController navController = Get.find<EmployeeNavController>();
+    final EmployeeNavController navController =
+        Get.find<EmployeeNavController>();
     Get.toNamed(AppRoutes.employeeNavBar);
     navController.changeIndex(0);
   }

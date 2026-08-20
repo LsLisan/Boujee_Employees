@@ -3,7 +3,7 @@ import 'package:get/get_navigation/src/routes/transitions_type.dart';
 
 import '../features/authentication/presentation/screen/forget_new_password_screen.dart';
 import '../features/authentication/presentation/screen/forget_password_screen.dart';
-import '../features/authentication/presentation/screen/forget_password_verify_screen.dart' hide ForgetPasswordScreen;
+import '../features/authentication/presentation/screen/forget_password_verify_screen.dart';
 import '../features/authentication/presentation/screen/login_screen.dart';
 import '../features/employee_home/presentation/screen/jobs_view_all_screen.dart';
 import '../features/employee_home/presentation/screen/upcoming_appointment_details_screen.dart';
@@ -15,25 +15,24 @@ import '../features/messaging/presentation/screen/chat_screen.dart';
 import '../features/splash/presentation/screen/splash_screen.dart';
 
 class AppRoutes {
-
   static const String init = '/';
   static const String employeeNavBar = '/employeeNavBar';
 
   static const String login = '/login';
   static const String forgetPassword = '/forgetPassword';
-  static const String forgetPasswordVerification = '/forgetPasswordVerification';
+  static const String forgetPasswordVerification =
+      '/forgetPasswordVerification';
   static const String resetPassword = '/resetPassword';
 
   static const String allJobs = '/allJobs';
-  static const String upcomingAppointmentDetails = '/upcomingAppointmentDetails';
+  static const String upcomingAppointmentDetails =
+      '/upcomingAppointmentDetails';
 
   static const String chat = '/chat';
 
   static const String editProfile = '/editProfile';
   static const String privacyPolicy = '/privacyPolicy';
   static const String certificate = '/certificate';
-
-
 
   static final List<GetPage> routes = [
     GetPage(
@@ -48,7 +47,6 @@ class AppRoutes {
       page: () => ForgetPasswordVerifyScreen(),
     ),
     GetPage(name: resetPassword, page: () => ForgetNewPasswordScreen()),
-
 
     GetPage(
       name: employeeNavBar,
@@ -88,10 +86,5 @@ class AppRoutes {
       page: () => CertificateScreen(),
       transition: Transition.cupertino,
     ),
-
-
-
   ];
-
-
 }

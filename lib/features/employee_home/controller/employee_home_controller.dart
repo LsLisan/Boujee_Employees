@@ -46,7 +46,8 @@ class EmployeeHomeController extends GetxController {
       JobModel(
         id: '1',
         petName: 'Truffle',
-        petImageUrl: 'https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&q=80&w=300',
+        petImageUrl:
+            'https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&q=80&w=300',
         serviceTitle: 'Grooming pkg 26-40lbs',
         serviceCategory: 'Dog Royal Services',
         clientName: 'Robert Cary',
@@ -58,7 +59,8 @@ class EmployeeHomeController extends GetxController {
       JobModel(
         id: '2',
         petName: 'Luna',
-        petImageUrl: 'https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&q=80&w=300',
+        petImageUrl:
+            'https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&q=80&w=300',
         serviceTitle: 'Grooming pkg 71+lbs',
         serviceCategory: 'Dog Royal Services',
         clientName: 'Robert Cary',
@@ -70,7 +72,8 @@ class EmployeeHomeController extends GetxController {
       JobModel(
         id: '3',
         petName: 'Duke',
-        petImageUrl: 'https://images.unsplash.com/photo-1537151625747-768eb6cf92b2?auto=format&fit=crop&q=80&w=300',
+        petImageUrl:
+            'https://images.unsplash.com/photo-1537151625747-768eb6cf92b2?auto=format&fit=crop&q=80&w=300',
         serviceTitle: 'Full Grooming pkg',
         serviceCategory: 'Cat Royal Services',
         clientName: 'Maria Santos',
@@ -98,7 +101,5 @@ class EmployeeHomeController extends GetxController {
     Get.toNamed(AppRoutes.allJobs);
   }
 
-  void onJobTap(JobModel job) {
-    // TODO: Navigate to job details screen
-  }
+  void onJobTap(JobModel job) {}
 }
