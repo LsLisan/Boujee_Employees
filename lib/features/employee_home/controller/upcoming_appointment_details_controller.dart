@@ -2,13 +2,11 @@ import 'package:boujee_employees/core/utils/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:image_picker/image_picker.dart';
 import '../../../core/services/google_map_service.dart';
 import '../../../routes/app_routes.dart';
 import '../../employee_nav/employee_nav_controller.dart';
 import '../model/appointment_details_model.dart';
-import '../presentation/widget/appoinment_details/complete_appointment_sheet.dart';
-import '../presentation/widget/appoinment_details/service_checklist_bottom_sheet.dart';
-import '../presentation/widget/appoinment_details/upload_photo_sheet.dart';
 
 class UpcomingAppointmentDetailsController extends GetxController {
   final Rx<AppointmentDetailsModel?> appointmentDetails =
@@ -177,42 +175,41 @@ class UpcomingAppointmentDetailsController extends GetxController {
     );
   }
 
-  /// Opens Service Checklist Full Screen Bottom Sheet
+  /// Opens Service Checklist Screen
   void onServiceChecklistTap() {
-    Get.bottomSheet(
-      const ServiceChecklistBottomSheet(),
-      isScrollControlled: true,
-      ignoreSafeArea: false,
-      backgroundColor: Colors.transparent,
-      enterBottomSheetDuration: const Duration(milliseconds: 300),
-      exitBottomSheetDuration: const Duration(milliseconds: 250),
-    );
+    Get.toNamed(AppRoutes.serviceChecklist);
   }
 
-  /// Opens Upload Photo Full Screen Bottom Sheet
+  /// Opens Upload Photo Screen
   void onUploadPhotoTap() {
-    Get.bottomSheet(
-      const UploadPhotoSheet(),
-      isScrollControlled: true,
-      ignoreSafeArea: false,
-      backgroundColor: Colors.transparent,
-      enterBottomSheetDuration: const Duration(milliseconds: 300),
-      exitBottomSheetDuration: const Duration(milliseconds: 250),
-    );
+    Get.toNamed(AppRoutes.uploadPhoto);
   }
 
-  void pickBeforePhoto() async {
-    // TODO: Integrate image_picker package
-    // final ImagePicker picker = ImagePicker();
-    // final XFile? image = await picker.pickImage(source: ImageSource.gallery);
-    // if (image != null) beforePhotoPath.value = image.path;
+  Future<void> pickBeforePhoto() async {
+    final XFile? image = await _pickFromGallery();
+    if (image != null) beforePhotoPath.value = image.path;
   }
 
-  void pickAfterPhoto() async {
-    // TODO: Integrate image_picker package
-    // final ImagePicker picker = ImagePicker();
-    // final XFile? image = await picker.pickImage(source: ImageSource.gallery);
-    // if (image != null) afterPhotoPath.value = image.path;
+  Future<void> pickAfterPhoto() async {
+    final XFile? image = await _pickFromGallery();
+    if (image != null) afterPhotoPath.value = image.path;
+  }
+
+  Future<XFile?> _pickFromGallery() async {
+    final ImagePicker picker = ImagePicker();
+    try {
+      return await picker.pickImage(
+        source: ImageSource.gallery,
+        imageQuality: 80,
+      );
+    } catch (e) {
+      Get.snackbar(
+        'Error',
+        'Failed to pick image. Please check gallery permission.',
+        snackPosition: SnackPosition.BOTTOM,
+      );
+      return null;
+    }
   }
 
   void onSavePhotosTap() {
@@ -238,7 +235,7 @@ class UpcomingAppointmentDetailsController extends GetxController {
         completionNotes: notesController.text,
       );
     }
-    Get.back(); // Close upload photo sheet
+    Get.back(); // Close upload photo screen
   }
 
   /// Advances the current status to the next step in the timeline
@@ -299,9 +296,7 @@ class UpcomingAppointmentDetailsController extends GetxController {
     );
   }
 
-  void onCancelTap() {
-    // TODO: Handle job cancellation flow
-  }
+  void onCancelTap() {}
 
   void onMapCreated(GoogleMapController controller) {
     mapController = controller;
@@ -315,16 +310,9 @@ class UpcomingAppointmentDetailsController extends GetxController {
     mapController?.animateCamera(CameraUpdate.zoomOut());
   }
 
-  /// Displays the Full Screen Job Complete Sheet
+  /// Displays the Job Complete Screen
   void onCompleteJobTap() {
-    Get.bottomSheet(
-      const CompleteAppointmentSheet(),
-      isScrollControlled: true,
-      ignoreSafeArea: false,
-      backgroundColor: Colors.transparent,
-      enterBottomSheetDuration: const Duration(milliseconds: 300),
-      exitBottomSheetDuration: const Duration(milliseconds: 250),
-    );
+    Get.offNamed(AppRoutes.completeAppointment);
   }
 
   /// Handles navigating back to the Home Screen

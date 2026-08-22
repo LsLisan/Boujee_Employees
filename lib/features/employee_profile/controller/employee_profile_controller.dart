@@ -20,7 +20,7 @@ class EmployeeProfileController extends GetxController {
     // Simulated API response data matching UI mockup
     profileData.value = EmployeeProfileModel(
       avatarUrl:
-      'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=300',
+          'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=300',
       name: 'Robert Cary',
       email: 'cary08@gmail.com',
       badge: 'Top Groomer',
@@ -75,8 +75,6 @@ class EmployeeProfileController extends GetxController {
     DeleteLogoutBottomSheet.showLogout(
       onLogoutConfirm: () {
         Get.back(); // Close the bottom sheet
-
-        // TODO: Clear session tokens / auth storage
 
         Get.snackbar(
           'Logged Out',

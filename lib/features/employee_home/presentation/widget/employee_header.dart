@@ -36,6 +36,10 @@ class EmployeeHeader extends StatelessWidget {
                   backgroundImage: avatarUrl != null && avatarUrl.isNotEmpty
                       ? NetworkImage(avatarUrl)
                       : null,
+                  onBackgroundImageError:
+                      avatarUrl != null && avatarUrl.isNotEmpty
+                          ? (_, _) {}
+                          : null,
                   child: avatarUrl == null || avatarUrl.isEmpty
                       ? Icon(Icons.person, color: Colors.grey, size: 28.r)
                       : null,

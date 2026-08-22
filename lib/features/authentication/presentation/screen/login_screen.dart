@@ -26,7 +26,10 @@ class LoginScreen extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 20.w),
           child: SizedBox(
             // Forces the column to fill full screen height for perfect vertical centering
-            height: Get.height - MediaQuery.of(context).padding.top - MediaQuery.of(context).padding.bottom,
+            height:
+                Get.height -
+                MediaQuery.of(context).padding.top -
+                MediaQuery.of(context).padding.bottom,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,

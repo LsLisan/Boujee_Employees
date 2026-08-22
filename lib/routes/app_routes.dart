@@ -5,7 +5,11 @@ import '../features/authentication/presentation/screen/forget_new_password_scree
 import '../features/authentication/presentation/screen/forget_password_screen.dart';
 import '../features/authentication/presentation/screen/forget_password_verify_screen.dart';
 import '../features/authentication/presentation/screen/login_screen.dart';
+import '../features/employee_home/presentation/screen/appointment_status_screen.dart';
+import '../features/employee_home/presentation/screen/complete_appointment_screen.dart';
 import '../features/employee_home/presentation/screen/jobs_view_all_screen.dart';
+import '../features/employee_home/presentation/screen/service_checklist_screen.dart';
+import '../features/employee_home/presentation/screen/upload_photo_screen.dart';
 import '../features/employee_home/presentation/screen/upcoming_appointment_details_screen.dart';
 import '../features/employee_nav/employee_nav_bar.dart';
 import '../features/employee_profile/presentation/screen/certificate_screen.dart';
@@ -28,6 +32,10 @@ class AppRoutes {
   static const String allJobs = '/allJobs';
   static const String upcomingAppointmentDetails =
       '/upcomingAppointmentDetails';
+  static const String serviceChecklist = '/serviceChecklist';
+  static const String appointmentStatus = '/appointmentStatus';
+  static const String uploadPhoto = '/uploadPhoto';
+  static const String completeAppointment = '/completeAppointment';
 
   static const String chat = '/chat';
   static const String notifications = '/notifications';
@@ -64,6 +72,26 @@ class AppRoutes {
     GetPage(
       name: upcomingAppointmentDetails,
       page: () => UpcomingAppointmentDetailsScreen(),
+      transition: Transition.cupertino,
+    ),
+    GetPage(
+      name: serviceChecklist,
+      page: () => const ServiceChecklistScreen(),
+      transition: Transition.cupertino,
+    ),
+    GetPage(
+      name: appointmentStatus,
+      page: () => const AppointmentStatusScreen(),
+      transition: Transition.cupertino,
+    ),
+    GetPage(
+      name: uploadPhoto,
+      page: () => const UploadPhotoScreen(),
+      transition: Transition.cupertino,
+    ),
+    GetPage(
+      name: completeAppointment,
+      page: () => const CompleteAppointmentScreen(),
       transition: Transition.cupertino,
     ),
 

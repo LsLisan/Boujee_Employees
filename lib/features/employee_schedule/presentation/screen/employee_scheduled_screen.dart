@@ -6,7 +6,6 @@ import '../../../../core/utils/constants/app_colors.dart';
 import '../../../employee_home/presentation/widget/job_tile.dart';
 import '../../controller/scheduled_controller.dart';
 
-
 class EmployeeScheduledScreen extends StatelessWidget {
   EmployeeScheduledScreen({super.key});
 
@@ -50,7 +49,9 @@ class EmployeeScheduledScreen extends StatelessWidget {
                           child: Container(
                             padding: EdgeInsets.symmetric(vertical: 10.h),
                             decoration: BoxDecoration(
-                              color: isCalendar ? const Color(0xFFC78330) : Colors.transparent,
+                              color: isCalendar
+                                  ? const Color(0xFFC78330)
+                                  : Colors.transparent,
                               borderRadius: BorderRadius.circular(30.r),
                             ),
                             child: Center(
@@ -58,7 +59,9 @@ class EmployeeScheduledScreen extends StatelessWidget {
                                 'Calendar',
                                 fontSize: 13.sp,
                                 fontWeight: FontWeight.bold,
-                                color: isCalendar ? AppColors.white : Colors.grey.shade700,
+                                color: isCalendar
+                                    ? AppColors.white
+                                    : Colors.grey.shade700,
                               ),
                             ),
                           ),
@@ -72,7 +75,9 @@ class EmployeeScheduledScreen extends StatelessWidget {
                           child: Container(
                             padding: EdgeInsets.symmetric(vertical: 10.h),
                             decoration: BoxDecoration(
-                              color: !isCalendar ? const Color(0xFFC78330) : Colors.transparent,
+                              color: !isCalendar
+                                  ? const Color(0xFFC78330)
+                                  : Colors.transparent,
                               borderRadius: BorderRadius.circular(30.r),
                             ),
                             child: Center(
@@ -80,7 +85,9 @@ class EmployeeScheduledScreen extends StatelessWidget {
                                 'List',
                                 fontSize: 13.sp,
                                 fontWeight: FontWeight.bold,
-                                color: !isCalendar ? AppColors.white : Colors.grey.shade700,
+                                color: !isCalendar
+                                    ? AppColors.white
+                                    : Colors.grey.shade700,
                               ),
                             ),
                           ),
@@ -128,10 +135,7 @@ class EmployeeScheduledScreen extends StatelessWidget {
             decoration: BoxDecoration(
               color: AppColors.white,
               borderRadius: BorderRadius.circular(24.r),
-              border: Border.all(
-                color: Colors.grey.shade200,
-                width: 1.w,
-              ),
+              border: Border.all(color: Colors.grey.shade200, width: 1.w),
             ),
             child: Column(
               children: [
@@ -150,17 +154,17 @@ class EmployeeScheduledScreen extends StatelessWidget {
                   children: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa']
                       .map(
                         (day) => SizedBox(
-                      width: 32.w,
-                      child: Center(
-                        child: CustomText(
-                          day,
-                          fontSize: 11.sp,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.grey.shade500,
+                          width: 32.w,
+                          child: Center(
+                            child: CustomText(
+                              day,
+                              fontSize: 11.sp,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.grey.shade500,
+                            ),
+                          ),
                         ),
-                      ),
-                    ),
-                  )
+                      )
                       .toList(),
                 ),
                 SizedBox(height: 12.h),
@@ -193,10 +197,7 @@ class EmployeeScheduledScreen extends StatelessWidget {
             itemCount: jobs.length,
             itemBuilder: (context, index) {
               final job = jobs[index];
-              return JobTile(
-                job: job,
-                onTap: () => controller.onJobTap(job),
-              );
+              return JobTile(job: job, onTap: () => controller.onJobTap(job));
             },
           ),
 
@@ -218,10 +219,7 @@ class EmployeeScheduledScreen extends StatelessWidget {
       itemCount: jobs.length,
       itemBuilder: (context, index) {
         final job = jobs[index];
-        return JobTile(
-          job: job,
-          onTap: () => controller.onJobTap(job),
-        );
+        return JobTile(job: job, onTap: () => controller.onJobTap(job));
       },
     );
   }
@@ -232,12 +230,43 @@ class EmployeeScheduledScreen extends StatelessWidget {
   Widget _buildCalendarGrid() {
     // August 2026 Grid layout offset (Starts on Saturday)
     final List<int?> days = [
-      null, null, null, null, null, null, 1,
-      2, 3, 4, 5, 6, 7, 8,
-      9, 10, 11, 12, 13, 14, 15,
-      16, 17, 18, 19, 20, 21, 22,
-      23, 24, 25, 26, 27, 28, 29,
-      30, 31,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
     ];
 
     // Mock days containing active scheduled jobs
@@ -264,7 +293,9 @@ class EmployeeScheduledScreen extends StatelessWidget {
             onTap: () => controller.selectDate(DateTime(2026, 8, day)),
             child: Container(
               decoration: BoxDecoration(
-                color: isSelected ? const Color(0xFFC78330) : Colors.transparent,
+                color: isSelected
+                    ? const Color(0xFFC78330)
+                    : Colors.transparent,
                 borderRadius: BorderRadius.circular(10.r),
               ),
               child: Column(
@@ -282,7 +313,9 @@ class EmployeeScheduledScreen extends StatelessWidget {
                       width: 4.r,
                       height: 4.r,
                       decoration: BoxDecoration(
-                        color: isSelected ? AppColors.white : const Color(0xFFC78330),
+                        color: isSelected
+                            ? AppColors.white
+                            : const Color(0xFFC78330),
                         shape: BoxShape.circle,
                       ),
                     ),

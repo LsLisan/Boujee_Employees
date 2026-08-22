@@ -5,7 +5,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import '../../../../core/global/custom_text.dart';
 import '../../../../core/utils/constants/app_colors.dart';
 import '../../controller/upcoming_appointment_details_controller.dart';
-import '../widget/appoinment_details/appointment_status_bottom_sheet.dart';
+import '../../../../routes/app_routes.dart';
 
 class UpcomingAppointmentDetailsScreen extends StatelessWidget {
   UpcomingAppointmentDetailsScreen({super.key});
@@ -14,13 +14,7 @@ class UpcomingAppointmentDetailsScreen extends StatelessWidget {
   Get.find<UpcomingAppointmentDetailsController>();
 
   void _openStatusBottomSheet() {
-    Get.bottomSheet(
-      const AppointmentStatusBottomSheet(),
-      isScrollControlled: true,
-      backgroundColor: Colors.transparent,
-      enterBottomSheetDuration: const Duration(milliseconds: 300),
-      exitBottomSheetDuration: const Duration(milliseconds: 250),
-    );
+    Get.toNamed(AppRoutes.appointmentStatus);
   }
 
   @override
