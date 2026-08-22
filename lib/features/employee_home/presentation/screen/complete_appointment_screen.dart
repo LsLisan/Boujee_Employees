@@ -1,23 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import '../../../../../core/global/custom_text.dart';
-import '../../../../../core/utils/constants/app_colors.dart';
-import '../../../controller/upcoming_appointment_details_controller.dart';
+import '../../../../core/global/custom_text.dart';
+import '../../../../core/utils/constants/app_colors.dart';
+import '../../controller/upcoming_appointment_details_controller.dart';
 
-class CompleteAppointmentSheet extends StatelessWidget {
-  const CompleteAppointmentSheet({super.key});
+class CompleteAppointmentScreen extends StatelessWidget {
+  const CompleteAppointmentScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     final UpcomingAppointmentDetailsController controller =
     Get.find<UpcomingAppointmentDetailsController>();
 
-    return Container(
-      height: 1.0.sh,
-      width: double.infinity,
-      color: AppColors.background,
-      child: SafeArea(
+    return Scaffold(
+      backgroundColor: AppColors.background,
+      body: SafeArea(
         child: Column(
           children: [
             // Main Content Area

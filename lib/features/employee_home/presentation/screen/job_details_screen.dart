@@ -1,5 +1,7 @@
 import 'package:boujee_employees/core/utils/constants/app_colors.dart';
+import 'package:boujee_employees/features/employee_home/presentation/screen/appointment_status_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 /// Static version of Job Details screen — all data is hardcoded
 /// so it can run standalone without any model/backend wiring.
@@ -25,7 +27,7 @@ class JobDetailsScreen extends StatelessWidget {
   static const String customerNotes =
       'Biscuit loves treats. Please use the lavender shampoo only.';
 
-  static final List<_ReviewData> reviews = [
+  static final List<_ReviewData> _reviews = [
     _ReviewData(
       reviewerName: 'Alex Rivera',
       avatarUrl: 'https://randomuser.me/api/portraits/men/45.jpg',
@@ -89,7 +91,7 @@ class JobDetailsScreen extends StatelessWidget {
                           const SizedBox(height: 20),
                           _buildReviewsHeader(),
                           const SizedBox(height: 12),
-                          ...reviews.map(
+                          ..._reviews.map(
                             (r) => Padding(
                               padding: const EdgeInsets.only(bottom: 14),
                               child: _buildReviewTile(r),
@@ -218,10 +220,7 @@ class JobDetailsScreen extends StatelessWidget {
           const SizedBox(height: 12),
           Row(
             children: [
-              const CircleAvatar(
-                radius: 22,
-                backgroundImage: NetworkImage(ownerAvatarUrl),
-              ),
+              _buildNetworkAvatar(url: ownerAvatarUrl, radius: 22),
               const SizedBox(width: 12),
               Expanded(
                 child: Column(
@@ -252,11 +251,11 @@ class JobDetailsScreen extends StatelessWidget {
               Expanded(
                 child: OutlinedButton.icon(
                   onPressed: () {},
-                  icon: const Icon(Icons.chat_bubble_outline, size: 18),
-                  label: const Text('Message'),
+                  icon: const Icon(Icons.call, size: 18),
+                  label: const Text('Call Client'),
                   style: OutlinedButton.styleFrom(
                     foregroundColor: AppColors.darkText,
-                    side: const BorderSide(color: Color(0xFFDDDDDD)),
+                    side: const BorderSide(color: AppColors.darkText),
                     padding: const EdgeInsets.symmetric(vertical: 12),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
@@ -381,10 +380,7 @@ class JobDetailsScreen extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          CircleAvatar(
-            radius: 18,
-            backgroundImage: NetworkImage(review.avatarUrl),
-          ),
+          _buildNetworkAvatar(url: review.avatarUrl, radius: 18),
           const SizedBox(width: 10),
           Expanded(
             child: Column(
@@ -446,6 +442,26 @@ class JobDetailsScreen extends StatelessWidget {
     );
   }
 
+  Widget _buildNetworkAvatar({required String url, required double radius}) {
+    return CircleAvatar(
+      radius: radius,
+      backgroundColor: AppColors.cardBg,
+      child: ClipOval(
+        child: Image.network(
+          url,
+          width: radius * 2,
+          height: radius * 2,
+          fit: BoxFit.cover,
+          errorBuilder: (_, _, _) => Icon(
+            Icons.person,
+            size: radius,
+            color: AppColors.greyText,
+          ),
+        ),
+      ),
+    );
+  }
+
   Widget _buildBottomButton(BuildContext context) {
     return Container(
       width: double.infinity,
@@ -454,7 +470,9 @@ class JobDetailsScreen extends StatelessWidget {
       child: SizedBox(
         height: 52,
         child: ElevatedButton(
-          onPressed: () {},
+          onPressed: () {
+            Get.to(const AppointmentStatusScreen());
+          },
           style: ElevatedButton.styleFrom(
             backgroundColor: AppColors.accentOrange,
             foregroundColor: Colors.white,

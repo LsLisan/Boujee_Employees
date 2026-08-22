@@ -34,7 +34,7 @@ class ScheduledController extends GetxController {
         id: '1',
         petName: 'Biscuit',
         petImageUrl:
-        'https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&q=80&w=300',
+            'https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&q=80&w=300',
         serviceTitle: 'Grooming pkg 26-40lbs',
         serviceCategory: 'Dog Royal Services',
         clientName: 'Robert Cary',
@@ -48,7 +48,7 @@ class ScheduledController extends GetxController {
         id: '2',
         petName: 'Luna',
         petImageUrl:
-        'https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&q=80&w=300',
+            'https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&q=80&w=300',
         serviceTitle: 'Bath & Brush',
         serviceCategory: 'Dog Royal Services',
         clientName: 'James Park',
@@ -62,7 +62,7 @@ class ScheduledController extends GetxController {
         id: '3',
         petName: 'Duke',
         petImageUrl:
-        'https://images.unsplash.com/photo-1537151625747-768eb6cf92b2?auto=format&fit=crop&q=80&w=300',
+            'https://images.unsplash.com/photo-1537151625747-768eb6cf92b2?auto=format&fit=crop&q=80&w=300',
         serviceTitle: 'Deshedding Treatment',
         serviceCategory: 'Cat Royal Services',
         clientName: 'Maria Santos',
@@ -76,7 +76,7 @@ class ScheduledController extends GetxController {
         id: '4',
         petName: 'Mochi',
         petImageUrl:
-        'https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&q=80&w=300',
+            'https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&q=80&w=300',
         serviceTitle: 'Full Groom',
         serviceCategory: 'Dog Royal Services',
         clientName: 'Tom Anderson',
@@ -90,7 +90,5 @@ class ScheduledController extends GetxController {
   }
 
   /// Handles tapping a job item
-  void onJobTap(JobModel job) {
-    // TODO: Navigate to job details screen
-  }
+  void onJobTap(JobModel job) {}
 }

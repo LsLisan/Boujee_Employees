@@ -29,7 +29,7 @@ class EmployeeNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Obx(
-          () => Scaffold(
+      () => Scaffold(
         body: IndexedStack(
           index: navIndexController.selectedIndex.value,
           children: screens,

@@ -51,6 +51,7 @@ class EmployeeProfileScreen extends StatelessWidget {
                   radius: 42.r,
                   backgroundColor: const Color(0xFFE5ECEF),
                   backgroundImage: NetworkImage(data.avatarUrl),
+                  onBackgroundImageError: (_, _) {},
                 ),
                 SizedBox(height: 12.h),
 

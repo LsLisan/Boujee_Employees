@@ -1,29 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import '../../../../../core/global/custom_text.dart';
-import '../../../../../core/utils/constants/app_colors.dart';
-import '../../../controller/upcoming_appointment_details_controller.dart';
+import '../../../../core/global/custom_text.dart';
+import '../../../../core/utils/constants/app_colors.dart';
+import '../../controller/upcoming_appointment_details_controller.dart';
 
-class ServiceChecklistBottomSheet extends StatelessWidget {
-  const ServiceChecklistBottomSheet({super.key});
+class ServiceChecklistScreen extends StatelessWidget {
+  const ServiceChecklistScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     final UpcomingAppointmentDetailsController controller =
     Get.find<UpcomingAppointmentDetailsController>();
 
-    return Obx(() {
-      final details = controller.appointmentDetails.value;
+    return Scaffold(
+      backgroundColor: AppColors.background,
+      body: SafeArea(
+        child: Obx(() {
+          final details = controller.appointmentDetails.value;
 
-      if (details == null) return const SizedBox.shrink();
+          if (details == null) return const SizedBox.shrink();
 
-      return Container(
-        height: 1.0.sh,
-        width: double.infinity,
-        color: AppColors.background,
-        child: SafeArea(
-          child: Column(
+          return Column(
             children: [
               // Header Section with Back Button
               Padding(
@@ -152,57 +150,63 @@ class ServiceChecklistBottomSheet extends StatelessWidget {
                             width: 1.w,
                           ),
                         ),
-                        child: ListView.separated(
-                          shrinkWrap: true,
-                          physics: const NeverScrollableScrollPhysics(),
-                          itemCount: details.checklistItems.length,
-                          separatorBuilder: (context, index) => Divider(
-                            height: 1,
-                            thickness: 1,
-                            color: Colors.grey.shade100,
-                          ),
-                          itemBuilder: (context, index) {
-                            final item = details.checklistItems[index];
-                            return ListTile(
-                              contentPadding: EdgeInsets.symmetric(
-                                horizontal: 16.w,
-                                vertical: 2.h,
-                              ),
-                              leading: GestureDetector(
-                                onTap: () => controller.toggleChecklistItem(item.id),
-                                child: Container(
-                                  width: 24.r,
-                                  height: 24.r,
-                                  decoration: BoxDecoration(
-                                    color: item.isDone
-                                        ? const Color(0xFFC78330)
-                                        : Colors.grey.shade100,
-                                    borderRadius: BorderRadius.circular(6.r),
-                                    border: Border.all(
+                        child: Material(
+                          type: MaterialType.transparency,
+                          child: ListView.separated(
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemCount: details.checklistItems.length,
+                            separatorBuilder: (context, index) => Divider(
+                              height: 1,
+                              thickness: 1,
+                              color: Colors.grey.shade100,
+                            ),
+                            itemBuilder: (context, index) {
+                              final item = details.checklistItems[index];
+                              return ListTile(
+                                contentPadding: EdgeInsets.symmetric(
+                                  horizontal: 16.w,
+                                  vertical: 2.h,
+                                ),
+                                leading: GestureDetector(
+                                  onTap: () =>
+                                      controller.toggleChecklistItem(item.id),
+                                  child: Container(
+                                    width: 24.r,
+                                    height: 24.r,
+                                    decoration: BoxDecoration(
                                       color: item.isDone
                                           ? const Color(0xFFC78330)
-                                          : Colors.grey.shade300,
-                                      width: 1.w,
+                                          : Colors.grey.shade100,
+                                      borderRadius:
+                                      BorderRadius.circular(6.r),
+                                      border: Border.all(
+                                        color: item.isDone
+                                            ? const Color(0xFFC78330)
+                                            : Colors.grey.shade300,
+                                        width: 1.w,
+                                      ),
                                     ),
+                                    child: item.isDone
+                                        ? Icon(
+                                      Icons.check_rounded,
+                                      color: AppColors.white,
+                                      size: 16.r,
+                                    )
+                                        : null,
                                   ),
-                                  child: item.isDone
-                                      ? Icon(
-                                    Icons.check_rounded,
-                                    color: AppColors.white,
-                                    size: 16.r,
-                                  )
-                                      : null,
                                 ),
-                              ),
-                              title: CustomText(
-                                item.title,
-                                fontSize: 14.sp,
-                                fontWeight: FontWeight.w500,
-                                color: AppColors.black,
-                              ),
-                              onTap: () => controller.toggleChecklistItem(item.id),
-                            );
-                          },
+                                title: CustomText(
+                                  item.title,
+                                  fontSize: 14.sp,
+                                  fontWeight: FontWeight.w500,
+                                  color: AppColors.black,
+                                ),
+                                onTap: () =>
+                                    controller.toggleChecklistItem(item.id),
+                              );
+                            },
+                          ),
                         ),
                       ),
 
@@ -219,7 +223,10 @@ class ServiceChecklistBottomSheet extends StatelessWidget {
 
                       // Multiline Text Field
                       Container(
-                        padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 4.h),
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 14.w,
+                          vertical: 4.h,
+                        ),
                         decoration: BoxDecoration(
                           color: AppColors.white,
                           borderRadius: BorderRadius.circular(20.r),
@@ -237,7 +244,8 @@ class ServiceChecklistBottomSheet extends StatelessWidget {
                           ),
                           decoration: InputDecoration(
                             border: InputBorder.none,
-                            hintText: 'How did the session go for ${details.petName}?',
+                            hintText:
+                            'How did the session go for ${details.petName}?',
                             hintStyle: TextStyle(
                               fontSize: 13.sp,
                               color: Colors.grey.shade400,
@@ -319,9 +327,9 @@ class ServiceChecklistBottomSheet extends StatelessWidget {
                 ),
               ),
             ],
-          ),
-        ),
-      );
-    });
+          );
+        }),
+      ),
+    );
   }
 }

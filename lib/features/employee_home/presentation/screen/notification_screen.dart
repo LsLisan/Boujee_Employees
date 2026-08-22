@@ -64,9 +64,7 @@ class NotificationScreen extends StatelessWidget {
             ),
           ),
           GestureDetector(
-            onTap: () {
-              // TODO: Mark all as read
-            },
+            onTap: () {},
             child: CustomText(
               'Mark all read',
               fontSize: 13.sp,
